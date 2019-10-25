@@ -139,8 +139,12 @@ class Translator {
             operators.push(operatorToken);
         } else {
             Operator topOperator = (Operator) operators.peek();
-            if (topOperator.getPriority() >= operatorToken.getPriority()) {
+            while (topOperator.getPriority() >= operatorToken.getPriority()) {
                 outputExpression.add(operators.pop());
+                if (operators.isEmpty()) {
+                    break;
+                }
+                topOperator = (Operator) operators.peek();
             }
             operators.push(operatorToken);
         }

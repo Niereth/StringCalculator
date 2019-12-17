@@ -106,7 +106,7 @@ public class Calculator implements Observed {
 
     private void removeFractionalZeroFromResultIfNecessary() {
         String[] numerals = result.split("\\.");
-        if (numerals[1].equals("0")) {
+        if (numerals.length > 1 && numerals[1].equals("0")) {
             result = numerals[0];
         }
     }
